@@ -19681,12 +19681,12 @@
 	react-bootstrap
 	**/
 	var Button = __webpack_require__(162).Button;
-	var AddModal = __webpack_require__(162).AddModal;
 
 	/**
 	Table
 	*/
 	var Table = __webpack_require__(413);
+	var AddModal = __webpack_require__(415);
 
 	var ReactCrudGrid = React.createClass({
 	  displayName: 'ReactCrudGrid',
@@ -47180,173 +47180,347 @@
 /* 413 */
 /***/ function(module, exports, __webpack_require__) {
 
+	//React
 	var React = __webpack_require__(2);
-	var Table = __webpack_require__(162).Table;
-	var Button = __webpack_require__(162).Button;
+
+	//react-bootstrap
+	var ReactBootstrap = __webpack_require__(162);
+	var Table = ReactBootstrap.Table;
+	var Button = ReactBootstrap.Button;
+	var Modal = ReactBootstrap.Modal;
+	var Input = ReactBootstrap.Input;
+
+	var EditButton = __webpack_require__(414);
 
 	var RgTable = React.createClass({
-	  displayName: 'RgTable',
+		displayName: 'RgTable',
+
+		getInitialState() {
+			return { showEditModal: false };
+		},
+
+		close() {
+			this.setState({ showEditModal: false });
+		},
+
+		open() {
+			this.setState({ showEditModal: true });
+		},
+
+		render: function () {
+			return React.createElement(
+				'div',
+				null,
+				React.createElement(
+					Table,
+					{ striped: true },
+					React.createElement(
+						'thead',
+						null,
+						React.createElement(
+							'tr',
+							null,
+							React.createElement(
+								'th',
+								null,
+								'#'
+							),
+							React.createElement(
+								'th',
+								null,
+								'First Name'
+							),
+							React.createElement(
+								'th',
+								null,
+								'Last Name'
+							),
+							React.createElement(
+								'th',
+								null,
+								'Username'
+							),
+							React.createElement(
+								'th',
+								null,
+								'Edit'
+							)
+						)
+					),
+					React.createElement(
+						'tbody',
+						null,
+						React.createElement(
+							'tr',
+							null,
+							React.createElement(
+								'td',
+								null,
+								'1'
+							),
+							React.createElement(
+								'td',
+								null,
+								'Mark'
+							),
+							React.createElement(
+								'td',
+								null,
+								'Otto'
+							),
+							React.createElement(
+								'td',
+								null,
+								'@mdo'
+							),
+							React.createElement(
+								'td',
+								null,
+								React.createElement(
+									Button,
+									{ bsStyle: 'primary', onClick: this.open },
+									'Edit'
+								),
+								' ',
+								React.createElement(
+									Button,
+									{ bsStyle: 'danger' },
+									'Delete'
+								)
+							)
+						),
+						React.createElement(
+							'tr',
+							null,
+							React.createElement(
+								'td',
+								null,
+								'2'
+							),
+							React.createElement(
+								'td',
+								null,
+								'Jacob'
+							),
+							React.createElement(
+								'td',
+								null,
+								'Thornton'
+							),
+							React.createElement(
+								'td',
+								null,
+								'@fat'
+							),
+							React.createElement(
+								'td',
+								null,
+								React.createElement(
+									Button,
+									{ bsStyle: 'primary', onClick: this.open },
+									'Edit'
+								),
+								' ',
+								React.createElement(
+									Button,
+									{ bsStyle: 'danger' },
+									'Delete'
+								)
+							)
+						),
+						React.createElement(
+							'tr',
+							null,
+							React.createElement(
+								'td',
+								null,
+								'3'
+							),
+							React.createElement(
+								'td',
+								{ colSpan: '2' },
+								'Larry the Bird'
+							),
+							React.createElement(
+								'td',
+								null,
+								'@twitter'
+							),
+							React.createElement(
+								'td',
+								null,
+								React.createElement(
+									Button,
+									{ bsStyle: 'primary', onClick: this.open },
+									'Edit'
+								),
+								' ',
+								React.createElement(
+									Button,
+									{ bsStyle: 'danger' },
+									'Delete'
+								)
+							)
+						)
+					)
+				),
+				React.createElement(
+					Modal,
+					{ show: this.state.showEditModal, onHide: this.close },
+					React.createElement(
+						Modal.Header,
+						{ closeButton: true },
+						React.createElement(
+							Modal.Title,
+							null,
+							'Title'
+						)
+					),
+					React.createElement(
+						Modal.Body,
+						null,
+						React.createElement(
+							'form',
+							{ className: 'form-horizontal' },
+							React.createElement(Input, { type: 'text', label: 'First Name', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' }),
+							React.createElement(Input, { type: 'textarea', label: 'Last Name', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' }),
+							React.createElement(Input, { type: 'textarea', label: 'UserName', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' })
+						)
+					),
+					React.createElement(
+						Modal.Footer,
+						null,
+						React.createElement(
+							Button,
+							{ bsStyle: 'primary', onClick: this.close },
+							'Add'
+						),
+						React.createElement(
+							Button,
+							{ onClick: this.close },
+							'cancel'
+						)
+					)
+				)
+			);
+		}
+	});
+
+	module.exports = RgTable;
+
+/***/ },
+/* 414 */
+/***/ function(module, exports, __webpack_require__) {
+
+	//React
+	var React = __webpack_require__(2);
+
+	//react-bootstrap
+	var ReactBootstrap = __webpack_require__(162);
+	var Button = ReactBootstrap.Button;
+
+	var EditButton = React.createClass({
+	  displayName: 'EditButton',
 
 	  render: function () {
-	    return tableInstance;
+	    return React.createElement(
+	      Button,
+	      { bsStyle: 'primary' },
+	      'Edit'
+	    );
 	  }
 	});
 
-	var tableInstance = React.createElement(
-	  Table,
-	  { striped: true },
-	  React.createElement(
-	    'thead',
-	    null,
-	    React.createElement(
-	      'tr',
-	      null,
-	      React.createElement(
-	        'th',
-	        null,
-	        '#'
-	      ),
-	      React.createElement(
-	        'th',
-	        null,
-	        'First Name'
-	      ),
-	      React.createElement(
-	        'th',
-	        null,
-	        'Last Name'
-	      ),
-	      React.createElement(
-	        'th',
-	        null,
-	        'Username'
-	      ),
-	      React.createElement(
-	        'th',
-	        null,
-	        'Edit'
-	      )
-	    )
-	  ),
-	  React.createElement(
-	    'tbody',
-	    null,
-	    React.createElement(
-	      'tr',
-	      null,
-	      React.createElement(
-	        'td',
-	        null,
-	        '1'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        'Mark'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        'Otto'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        '@mdo'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'primary' },
-	          'Edit'
-	        ),
-	        ' ',
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'danger' },
-	          'Delete'
-	        )
-	      )
-	    ),
-	    React.createElement(
-	      'tr',
-	      null,
-	      React.createElement(
-	        'td',
-	        null,
-	        '2'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        'Jacob'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        'Thornton'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        '@fat'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'primary' },
-	          'Edit'
-	        ),
-	        ' ',
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'danger' },
-	          'Delete'
-	        )
-	      )
-	    ),
-	    React.createElement(
-	      'tr',
-	      null,
-	      React.createElement(
-	        'td',
-	        null,
-	        '3'
-	      ),
-	      React.createElement(
-	        'td',
-	        { colSpan: '2' },
-	        'Larry the Bird'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        '@twitter'
-	      ),
-	      React.createElement(
-	        'td',
-	        null,
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'primary' },
-	          'Edit'
-	        ),
-	        ' ',
-	        React.createElement(
-	          Button,
-	          { bsStyle: 'danger' },
-	          'Delete'
-	        )
-	      )
-	    )
-	  )
-	);
+	module.exports = EditButton;
 
-	module.exports = RgTable;
+/***/ },
+/* 415 */
+/***/ function(module, exports, __webpack_require__) {
+
+	var React = __webpack_require__(2);
+
+	/**
+	react-bootstrap
+	*/
+	var ReactBootstrap = __webpack_require__(162);
+	var Button = ReactBootstrap.Button;
+	var Modal = ReactBootstrap.Modal;
+	var OverlayTrigger = ReactBootstrap.OverlayTrigger;
+	var Popover = ReactBootstrap.Popover;
+	var Tooltip = ReactBootstrap.Tooltip;
+	var Input = ReactBootstrap.Input;
+
+	const AddModal = React.createClass({
+	  displayName: 'AddModal',
+
+
+	  getInitialState() {
+	    return { showModal: false };
+	  },
+
+	  close() {
+	    this.setState({ showModal: false });
+	  },
+
+	  open() {
+	    this.setState({ showModal: true });
+	  },
+
+	  render() {
+	    return React.createElement(
+	      'div',
+	      null,
+	      React.createElement(
+	        Button,
+	        {
+	          bsStyle: 'primary',
+	          onClick: this.open
+	        },
+	        'Add'
+	      ),
+	      React.createElement(
+	        Modal,
+	        { show: this.state.showModal, onHide: this.close },
+	        React.createElement(
+	          Modal.Header,
+	          { closeButton: true },
+	          React.createElement(
+	            Modal.Title,
+	            null,
+	            'Title'
+	          )
+	        ),
+	        React.createElement(
+	          Modal.Body,
+	          null,
+	          React.createElement(
+	            'form',
+	            { className: 'form-horizontal' },
+	            React.createElement(Input, { type: 'text', label: 'First Name', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' }),
+	            React.createElement(Input, { type: 'textarea', label: 'Last Name', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' }),
+	            React.createElement(Input, { type: 'textarea', label: 'UserName', labelClassName: 'col-xs-2', wrapperClassName: 'col-xs-10' })
+	          )
+	        ),
+	        React.createElement(
+	          Modal.Footer,
+	          null,
+	          React.createElement(
+	            Button,
+	            { bsStyle: 'primary', onClick: this.close },
+	            'Add'
+	          ),
+	          React.createElement(
+	            Button,
+	            { onClick: this.close },
+	            'cancel'
+	          )
+	        )
+	      )
+	    );
+	  }
+	});
+
+	module.exports = AddModal;
 
 /***/ }
 /******/ ]);
