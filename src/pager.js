@@ -9,15 +9,27 @@ var RgPager = React.createClass({
 });
 
 const pagerInstance = (
-  <Pager className="pagination">
-    <PageItem previous href="#">&larr; Previous</PageItem>
-		<PageItem href="#">1</PageItem>
-		<PageItem href="#">2</PageItem>
-		<PageItem href="#">3</PageItem>
-		<PageItem href="#">4</PageItem>
-		<PageItem href="#">5</PageItem>
-    <PageItem disabled next href="#">Next &rarr;</PageItem>
-  </Pager>
+	<div className="Pager">
+		<nav>
+			<ul className="pagination">
+				<li>
+					<a href="#" aria-label="Previous">
+						<span aria-hidden="true">&laquo;</span>
+					</a>
+				</li>
+				<li><a href="#">1</a></li>
+				<li><a href="#">2</a></li>
+				<li><a href="#">3</a></li>
+				<li><a href="#">4</a></li>
+				<li><a href="#">5</a></li>
+				<li>
+					<a href="#" aria-label="Next">
+						<span aria-hidden="true">&raquo;</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
 );
 
 

@@ -8,7 +8,6 @@ var Button = ReactBootstrap.Button;
 var Modal = ReactBootstrap.Modal;
 var Input = ReactBootstrap.Input;
 
-var EditButton  = require('./editButton');
 
 var RgTable = React.createClass({
 	getInitialState() {
@@ -88,9 +87,10 @@ var RgTable = React.createClass({
 						<Modal.Title>Title</Modal.Title>
 					</Modal.Header>
 					<Modal.Body>
+						Are you sure you want to delete？
 					</Modal.Body>
 					<Modal.Footer>
-						<Button bsStyle="primary" onClick={this.closeDel}>Update</Button>
+						<Button bsStyle="danger" onClick={this.closeDel}>Delete</Button>
 						<Button onClick={this.closeDel}>cancel</Button>
 					</Modal.Footer>
 				</Modal>
