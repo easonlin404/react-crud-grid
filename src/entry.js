@@ -1,34 +1,25 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
 
-
 var ReactCrudGrid = require('./react-crud-grid');
 
 var data =[
 {	firstName: 'Mark',
 	lastName:	 'Otto',
-	userName:	'@mdo'
+	userName:	 '@mdo'
 },
 {
 	firstName: 'Jacob',
 	lastName:	 'Thornton',
-	userName:	'@fat'
+	userName:	 '@fat'
 },
 {
 	firstName: 'Larry the Bird',
-	userName:	'@twitter'
+	userName:	 '@twitter'
 }
 ];
-
-var SPA = React.createClass({
-	render: function() {
-    return (
-      <ReactCrudGrid data={data}/>
-    );
-  }
-});
 
 
 var mountNode = document.getElementById('content');
 
-ReactDOM.render( <SPA/>, mountNode);
+ReactDOM.render( <ReactCrudGrid data={data}/>, mountNode);

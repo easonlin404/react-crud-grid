@@ -31,6 +31,19 @@ var RgTable = React.createClass({
   },
 
 	render: function() {
+		var rows = [];
+		this.props.data.forEach(function(data,i) {
+			//TODO:get each data's props
+			rows.push(
+								<tr key={i}>
+									<td>1</td>
+									<td>{data.firstName}</td>
+									<td>{data.lastName}</td>
+									<td>{data.userName}</td>
+									<td><Button bsStyle="primary" onClick={this.open}>Edit</Button> <Button bsStyle="danger" onClick={this.openDel}>Delete</Button></td>
+							</tr>
+			);
+    }, this);
     return (
 			<div className="RgTable">
 			  <Table striped>
@@ -44,26 +57,7 @@ var RgTable = React.createClass({
 			      </tr>
 			    </thead>
 			    <tbody>
-			      <tr>
-			        <td>1</td>
-			        <td>Mark</td>
-			        <td>Otto</td>
-			        <td>@mdo</td>
-							<td><Button bsStyle="primary" onClick={this.open}>Edit</Button> <Button bsStyle="danger" onClick={this.openDel}>Delete</Button></td>
-			      </tr>
-			      <tr>
-			        <td>2</td>
-			        <td>Jacob</td>
-			        <td>Thornton</td>
-			        <td>@fat</td>
-							<td><Button bsStyle="primary" onClick={this.open}>Edit</Button> <Button bsStyle="danger" onClick={this.openDel}>Delete</Button></td>
-			      </tr>
-			      <tr>
-			        <td>3</td>
-			        <td colSpan="2">Larry the Bird</td>
-			        <td>@twitter</td>
-						  <td><Button bsStyle="primary" onClick={this.open}>Edit</Button> <Button bsStyle="danger" onClick={this.openDel}>Delete</Button></td>
-			      </tr>
+			    {rows}
 			    </tbody>
 			  </Table>
 				<Modal show={this.state.showEditModal} onHide={this.close}>

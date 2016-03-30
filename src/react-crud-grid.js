@@ -1,6 +1,6 @@
 var React = require('react');
 var ReactDOM = require('react-dom');
-var $ = require("jquery");
+
 
 /**
 react-bootstrap
@@ -19,7 +19,7 @@ var ReactCrudGrid = React.createClass({
     return (
       <div className="ReactCrudGrid">
        <AddModal/>
-        <Table/>
+        <Table data={this.props.data}/>
         <Pager/>
       </div>
     );
